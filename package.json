@@ -1,0 +1,13 @@
+{
+    "name": "priceoye",
+    "version": "1.0.0",
+    "scripts": {
+        "build:css": "tailwindcss -i ./src/priceoye/static/css/input.css -o ./src/priceoye/static/css/tailwind.css --minify",
+        "watch:css": "tailwindcss -i ./src/priceoye/static/css/input.css -o ./src/priceoye/static/css/tailwind.css --watch"
+    },
+    "devDependencies": {
+        "tailwindcss": "^3.4.1",
+        "postcss": "^8.4.31",
+        "autoprefixer": "^10.4.16"
+    }
+}

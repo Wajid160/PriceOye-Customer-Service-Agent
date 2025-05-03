@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PriceOye - Buy Mobiles in Pakistan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/tailwind.css">
+</head>
+<body class="font-poppins bg-gray-100">
+    <!-- Header -->
+    <header class="bg-white shadow">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-blue-600">PriceOye</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="#" class="text-gray-600 hover:text-blue-600">Mobiles</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-blue-600">Accessories</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-blue-600">Support</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-blue-600 text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-4">Buy the Best Mobiles in Pakistan</h2>
+            <p class="text-lg mb-6">Shop PTA-approved phones with fast delivery!</p>
+            <a href="#" class="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Product Grid -->
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <h3 class="text-2xl font-bold mb-6">Featured Mobiles</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white shadow rounded-lg overflow-hidden">
+                    <img src="https://via.placeholder.com/300x200" alt="Samsung Galaxy A54" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="text-lg font-semibold">Samsung Galaxy A54</h4>
+                        <p class="text-gray-600">PKR 79,999</p>
+                    </div>
+                </div>
+                <div class="bg-white shadow rounded-lg overflow-hidden">
+                    <img src="https://via.placeholder.com/300x200" alt="Infinix Note 30" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h4 class="text-lg font-semibold">Infinix Note 30</h4>
+                        <p class="text-gray-600">PKR 49,999</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h4 class="text-lg font-bold mb-4">PriceOye</h4>
+                    <p>Shop the best mobiles with confidence.</p>
+                    <p>Developed by Wajid Javed.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Links</h4>
+                    <ul>
+                        <li><a href="#" class="hover:text-blue-400">Home</a></li>
+                        <li><a href="#" class="hover:text-blue-400">Support</a></li>
+                        <li><a href="#" class="hover:text-blue-400">Returns</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Contact</h4>
+                    <p>Email: support@priceoye.pk</p>
+                    <p>Phone: 051-111-693-693</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Button -->
+    <button id="chat-toggle" class="fixed bottom-6 right-6 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transform hover:scale-105 transition-transform">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
+        </svg>
+    </button>
+
+    <!-- Chat Widget -->
+    <div id="chat-widget" class="hidden fixed bottom-20 right-6 w-[400px] bg-white rounded-xl shadow-2xl border">
+        {% include 'chat.html' %}
+    </div>
+
+    <script src="/static/js/chat.js"></script>
+</body>
+</html>

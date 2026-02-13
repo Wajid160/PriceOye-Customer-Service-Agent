@@ -1,180 +1,71 @@
-# 💼 PriceOye Customer Service Agent
+# 🛍️ PriceOye Customer Service Agent
 
-An intelligent, real-time support agent built for **PriceOye**, a leading Pakistani e-commerce platform for mobile phones and accessories. Unlike traditional chatbots, this system is powered by **OpenAI Agents SDK**, enabling context-aware, intent-driven conversations that go beyond scripted replies.
-
-It leverages a **modular multi-agent architecture** to deliver seamless support for product inquiries, order tracking, returns, warranty checks, and cart recovery—tailored for both user satisfaction and operational efficiency.
+An AI-powered customer service automation system built for [PriceOye](https://priceoye.pk) — Pakistan's leading e-commerce platform. This agent handles customer inquiries automatically, providing instant responses with intelligent query resolution.
 
 ---
 
-## 🔧 Key Features
+## 🎯 Problem
 
-### 🧠 Intelligent Task Orchestration
+Customer service teams spend hours daily answering repetitive questions — order status, return policies, product availability. This creates delays, inconsistent responses, and high operational costs.
 
-The **Orchestrator Agent** uses intent classification to route queries to specialized agents via tools like `get_product_info`, `process_return`, and `get_customer_sentiment`.
+## 💡 Solution
 
-### 🗨️ Context-Aware Responses
-
-Supports multi-turn conversations with memory—enabling follow-ups like:
-
-> “What’s the price of Samsung Galaxy A05?”
-> “Compare it with Infinix Note 30.”
-
-### 😟 Sentiment-Aware Interaction
-
-Detects emotional tone (e.g., frustration, delays) and responds with empathy:
-
-> “I’m sorry for the inconvenience—let’s resolve this together.”
-
-### 🛍️ E-Commerce Modules
-
-* **Product Agent** – Specs, pricing, and comparisons
-* **Order Agent** – Real-time order tracking
-* **Return Agent** – Refund eligibility & process guidance
-* **Warranty Agent** – Claim instructions & status
-* **Proactive Agent** – Cart nudges & delivery updates
+An AI agent that:
+- **Understands customer intent** from natural language queries
+- **Retrieves real-time data** (order status, product info, FAQs)
+- **Responds instantly** with accurate, contextual answers
+- **Escalates intelligently** when human intervention is needed
 
 ---
 
-## 📈 Business Impact
+## 🏗️ Architecture
 
-| Area                  | Impact                                                                    |
-| --------------------- | ------------------------------------------------------------------------- |
-| ⏱️ Response Time      | \~20x faster (10 sec vs. 5 min average human response)                    |
-| 💸 Cost Savings       | Automates \~80% of queries → \~PKR 5M saved/year (10 agents @ PKR 50K/mo) |
-| 🛒 Cart Recovery      | \~PKR 2M/year via 10% conversion on 10,000 abandoned carts                |
-| 🔁 Customer Retention | \~25% increase due to faster, more empathetic responses                   |
+```
+Customer Query
+     ↓
+  AI Agent (Claude/OpenAI)
+     ↓
+  Intent Classification
+     ↓
+  ┌──────────────────┐
+  │ FAQ Lookup (RAG)  │
+  │ Order Status API  │
+  │ Product Search    │
+  │ Escalation Logic  │
+  └──────────────────┘
+     ↓
+  Response Generation
+     ↓
+  Customer Response
+```
 
 ---
 
 ## 🛠️ Tech Stack
 
-* **OpenAI Agents SDK** – Task-driven AI workflows with memory
-* **Python (Flask)** – REST API & backend routing
-* **Custom Tools** – Domain-specific tools (e.g., `compare_products`, `track_order`)
-* **PriceOye Database** – Real-time access to products, orders, and FAQs
+![N8N](https://img.shields.io/badge/N8N-EA4B71?style=flat&logo=n8n&logoColor=white)
+![Claude AI](https://img.shields.io/badge/Claude_AI-191919?style=flat)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![Qdrant](https://img.shields.io/badge/Qdrant-DC382D?style=flat)
+
+- **N8N** — Workflow orchestration and API integrations
+- **Claude AI** — Natural language understanding and response generation
+- **Qdrant** — Vector database for FAQ retrieval (RAG)
+- **Python** — Custom logic and data processing
 
 ---
 
-## 📁 Project Structure
+## ✨ Features
 
-```
-priceoye/
-├── .gitignore
-├── LICENSE
-├── README.md
-├── requirements.txt
-├── package.json
-├── tailwind.config.js
-├── src/
-│   └── priceoye/
-│       ├── __init__.py
-│       ├── main.py
-│       ├── data.py
-│       ├── agents_.py
-│       ├── routes.py
-│       ├── config.py
-│       ├── tools.py
-│       ├── static/
-│       │   └── js/
-│       │       └── chat.js
-│       └── templates/
-│           ├── index.html
-│           └── chat.html
-```
+- 🤖 Automated customer inquiry handling
+- 🔍 RAG-based FAQ retrieval for accurate answers
+- 📦 Real-time order status lookup
+- 🔄 Intelligent escalation to human agents
+- 📊 Multi-channel support (chat widget, email)
+- ⚡ Sub-second response times
 
 ---
 
-## ⚙️ Setup Instructions
+## 📫 Contact
 
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/Wajid160/PriceOye-Customer-Service-Agent.git
-cd PriceOye-Customer-Service-Agent
-```
-
-### 2. Set Up Virtual Environment
-
-```bash
-uv venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-```
-
-### 3. Install Dependencies
-
-```bash
-uv pip install -r requirements.txt
-npm install
-npm run build:css
-```
-
-### 4. Configure Environment Variables
-
-Create a `.env` file:
-
-```
-GEMINI_API_KEY=your_api_key
-FLASK_SECRET_KEY=your_secret_key
-FLASK_DEBUG=True
-```
-
-### 5. Run the Application
-
-```bash
-uv run python src/priceoye/main.py
-```
-
-### 6. Access the Agent
-
-Open [http://localhost:5000](http://localhost:5000) in your browser to interact with the agent.
-
----
-
-## 🧪 Usage Examples
-
-| Query Type        | Example Prompt                                     | Agent Invoked     |
-| ----------------- | -------------------------------------------------- | ----------------- |
-| 📱 Product Info   | “Compare iPhone 15 vs Galaxy S24”                  | `product_agent`   |
-| 📦 Order Status   | “Where’s my order #1001?”                          | `order_agent`     |
-| 🔁 Return Help    | “How do I return my phone?”                        | `return_agent`    |
-| 🛡️ Warranty Help | “What’s the warranty for order #1001?”             | `warranty_agent`  |
-| 🛒 Cart Nudges    | (Triggered proactively) “Your Samsung S23 awaits!” | `proactive_agent` |
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome!
-
-* Fork the repo
-* Create a feature branch
-* Submit a pull request
-
-Please follow [PEP 8](https://peps.python.org/pep-0008/) and check open issues for ideas.
-
-📁 **Repo**: [github.com/Wajid160/PriceOye-Customer-Service-Agent](https://github.com/Wajid160/PriceOye-Customer-Service-Agent)
-🐛 **Issues**: Submit bug reports or enhancements via GitHub Issues
-
----
-
-## 🙏 Acknowledgments
-
-Special thanks to my mentors:
-**Sir Zia, Sir Qasim, Sir Junaid, and Sir Ameen** — for their exceptional guidance in AI, Python, and system design.
-
----
-
-## 📜 License
-
-Licensed under the [MIT License](./LICENSE). Free to use, modify, and distribute with attribution.
-
----
-
-## 📬 Contact
-
-Want to collaborate, suggest improvements, or ask questions?
-📨 Reach out via GitHub Issues or connect with me on [LinkedIn](www.linkedin.com/in/wajid-javed160).
-
----
-
-**Built with passion to empower e-commerce through agentic AI.**
+**Wajid Javed** — [LinkedIn](https://www.linkedin.com/in/wajidjaved160/) | [YouTube](https://youtube.com/@PhotiqAI) | [Portfolio](https://wajid-javed-portfolio.vercel.app/)
